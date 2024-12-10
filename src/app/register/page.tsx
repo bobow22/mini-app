@@ -25,11 +25,14 @@ function RegisterPage() {
         return;
       }
       const response = await axios.post('/api/register', user);
-      console.log('Sign up successfully', response.data);
-
+      console.log('Sign up successfully', response);
       router.push('/login');
     } catch (error: any) {
-      console.log('Sign up failed', error.message);
+      if (error.response) {
+        setError(error.response.data.error || 'An unexpected error occurred');
+      } else {
+        setError('Failed to connect to the server');
+      }
     }
   };
 
@@ -60,7 +63,7 @@ function RegisterPage() {
                     type='text'
                     name='username'
                     id='username'
-                    className='bg-gray-50 border  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500'
+                    className='border  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500'
                     placeholder='username'
                     value={username}
                     onChange={(e) =>
@@ -80,7 +83,7 @@ function RegisterPage() {
                     type='email'
                     name='email'
                     id='email'
-                    className='bg-gray-50 border  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500'
+                    className='border  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500'
                     placeholder='name@company.com'
                     value={email}
                     onChange={(e) =>
@@ -101,7 +104,7 @@ function RegisterPage() {
                     name='password'
                     id='password'
                     placeholder='••••••••'
-                    className=' border rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500'
+                    className='border rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500'
                     value={password}
                     onChange={(e) =>
                       setUser({ ...user, password: e.target.value })

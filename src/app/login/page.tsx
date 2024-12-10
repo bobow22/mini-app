@@ -14,17 +14,22 @@ function LoginPage() {
     username: '',
   });
 
+  const [error, setError] = useState('');
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
       const response = await axios.post('/api/login', user);
-      console.log('response', response);
       console.log('Log in successfully', response.data);
       // TODO: มาเปลี่ยนเป็น /product ด้วย
       router.push('/');
     } catch (error: any) {
-      console.log('Log in failed', error.message);
+      if (error.response) {
+        setError(error.response.data.error || 'An unexpected error occurred');
+      } else {
+        setError('Failed to connect to the server');
+      }
     }
   };
 
@@ -39,6 +44,11 @@ function LoginPage() {
                 Sign in to your account
               </h1>
               <form className='space-y-4 md:space-y-6'>
+                {error && (
+                  <div className='w-fit text-sm text-red-500 py-2  rounded-md mt-2'>
+                    {error}
+                  </div>
+                )}
                 <div>
                   <label
                     htmlFor='email'
@@ -50,7 +60,7 @@ function LoginPage() {
                     type='email'
                     name='email'
                     id='email'
-                    className='bg-gray-50 border  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500'
+                    className='border  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500'
                     placeholder='name@company.com'
                     value={user.email}
                     onChange={(e) =>
