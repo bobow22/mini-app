@@ -103,20 +103,20 @@ export default function FruitTablePage() {
 
   const ActionButtons = (params: any) => {
     return (
-      <>
+      <div className='flex flex-wrap justify-center'>
         <button
-          className='bg-white text-black m-2 p-1'
+          className='bg-yellow-500 hover:bg-blue-600 text-white rounded-md shadow-md mx-1 px-2 transition duration-300'
           onClick={() => handleUpdate(params.data)}
         >
           Update
         </button>
         <button
-          className='bg-red-500 text-white m-2 p-1'
+          className='bg-red-500 hover:bg-blue-600 text-white rounded-md shadow-md mx-1 px-2 transition duration-300'
           onClick={() => handleDelete(params.data.id)}
         >
           Delete
         </button>
-      </>
+      </div>
     );
   };
 
@@ -155,8 +155,14 @@ export default function FruitTablePage() {
           maximumFractionDigits: 2,
         });
       },
+      flex: 0.8,
     },
-    { field: 'unit', headerName: 'Unit', cellStyle: { textAlign: 'right' } },
+    {
+      field: 'unit',
+      headerName: 'Unit',
+      cellStyle: { textAlign: 'right' },
+      flex: 0.8,
+    },
     {
       field: 'total',
       headerName: 'Total',
@@ -166,11 +172,13 @@ export default function FruitTablePage() {
           maximumFractionDigits: 2,
         });
       },
+      flex: 0.8,
     },
     {
       headerName: 'Actions',
       cellRenderer: ActionButtons,
       filter: false,
+      flex: 1,
     },
   ]);
 
@@ -191,7 +199,7 @@ export default function FruitTablePage() {
 
       <div className='flex justify-start'>
         <button
-          className='bg-green-500 text-white px-4 py-2 rounded shadow'
+          className='bg-green-500 hover:bg-green-600 hover:border-green-900 text-white px-4 py-2 rounded shadow transition duration-300'
           onClick={handleClickOpen}
         >
           Add Fruit
