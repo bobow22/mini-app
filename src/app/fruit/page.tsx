@@ -194,7 +194,7 @@ export default function FruitTablePage() {
     <div className='relative'>
       <Navbar />
       <div className='mt-4 flex flex-col items-center justify-center '>
-        <h3 className='text-2xl text-gray-800 mb-4 '>Fruit Data</h3>
+        <h3 className='text-3xl  text-gray-800 mb-4 '>Fruit Data</h3>
       </div>
 
       <div className='flex justify-start'>

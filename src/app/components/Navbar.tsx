@@ -34,16 +34,24 @@ function Navbar() {
       await axios.get('/api/logout');
 
       // TODO: หรือจะไปหน้าอื่น
-      router.push('/login');
+      router.push('/');
     } catch (error: any) {
       console.log(error.message);
     }
   };
 
   return (
-    <nav className='top-0 left-0 w-full bg-[#303857] text-white p-5'>
+    <nav className='w-full bg-[#303857] text-white p-5'>
       <div className='container mx-auto'>
-        <div className='flex justify-end items-center'>
+        <div className='flex justify-between items-center'>
+          <ul className='flex'>
+            <li className='mx-5'>
+              <Link href='/'>Home</Link>
+            </li>
+            <li className='mx-5'>
+              <Link href='/fruit'>Fruit</Link>
+            </li>
+          </ul>
           <ul className='flex'>
             {username ? (
               <>

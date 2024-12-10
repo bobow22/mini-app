@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
 
     if (!user.rows.length) {
       return NextResponse.json(
-        { error: 'User does not exist' },
+        { error: 'User does not exist, please try again.' },
         { status: 400 }
       );
     }
