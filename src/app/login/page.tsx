@@ -22,8 +22,7 @@ function LoginPage() {
     try {
       const response = await axios.post('/api/login', user);
       console.log('Log in successfully', response.data);
-      // TODO: มาเปลี่ยนเป็น /product ด้วย
-      router.push('/');
+      router.push('/fruit');
     } catch (error: any) {
       if (error.response) {
         setError(error.response.data.error || 'An unexpected error occurred');
