@@ -48,9 +48,7 @@ export async function POST(request: NextRequest) {
     });
 
     // set cookies
-    response.cookies.set('token', token, {
-      httpOnly: true,
-    });
+    response.cookies.set('token', token);
 
     return response;
   } catch (error: any) {
