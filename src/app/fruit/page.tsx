@@ -22,7 +22,7 @@ const initialValue = {
 export default function FruitTablePage() {
   const [formData, setFormData] = useState(initialValue);
   const [rowData, setRowData] = useState([]);
-  const [pageSize, setPageSize] = useState(20);
+  const [pageSize] = useState(20);
   const [open, setOpen] = useState(false);
   const [error, setError] = useState('');
 
