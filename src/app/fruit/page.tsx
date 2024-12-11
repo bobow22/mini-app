@@ -94,7 +94,6 @@ export default function FruitTablePage() {
   };
 
   const handleUpdate = async (oldData: any) => {
-    console.log(oldData);
     setFormData({ ...oldData, date: convertDate(oldData.date) });
     handleClickOpen();
   };

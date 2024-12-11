@@ -37,7 +37,6 @@ export async function POST(request: NextRequest) {
     const reqBody = await request.json();
     const { date, product_name, color, amount, unit } = reqBody;
 
-    // TODO: ทำตัวแรกสุดของชื่อกับสีให้เป็นตัวใหญ่ด้วย
     const result = await connection.query(
       `
             INSERT INTO

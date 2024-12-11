@@ -8,7 +8,6 @@ export async function POST(request: NextRequest) {
     const { username, email, password } = reqBody;
 
     // check email if user already exists
-    // TODO: จะ check username ด้วยไหม เดี๋ยวดูอีกที
     const user = await connection.query(
       'SELECT * FROM users WHERE email = $1',
       [email]
