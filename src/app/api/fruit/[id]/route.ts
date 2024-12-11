@@ -36,12 +36,9 @@ export async function DELETE(
   }
 }
 
-export async function PUT(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function PUT(request: NextRequest, { params }) {
   try {
-    const { id } = await params;
+    const { id } = params;
     const reqBody = await request.json();
     const { date, product_name, color, amount, unit } = reqBody;
     // Execute a DELETE query on your database
