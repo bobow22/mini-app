@@ -1,11 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import connection from '@/dbConfig/dbConfig'; // Adjust the path to your database setup
 
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
-  const { id } = await params;
+export async function DELETE(request: NextRequest, params: { params: any }) {
+  const { id } = params.params;
 
   try {
     // Execute a DELETE query on your database
