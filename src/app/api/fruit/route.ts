@@ -15,7 +15,7 @@ export async function GET() {
         FROM 
             fruit
         ORDER BY 
-            date desc;
+            id desc;
 `);
     const fruits = result.rows;
 

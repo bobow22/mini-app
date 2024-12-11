@@ -32,8 +32,6 @@ function Navbar() {
   const logout = async () => {
     try {
       await axios.get('/api/logout');
-
-      // TODO: หรือจะไปหน้าอื่น
       router.push('/');
     } catch (error: any) {
       console.log(error.message);

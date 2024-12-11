@@ -30,6 +30,7 @@ export default function FruitTablePage() {
     setOpen(true);
   };
   const handleClose = () => {
+    setError('');
     setFormData(initialValue);
     setOpen(false);
   };
@@ -51,6 +52,18 @@ export default function FruitTablePage() {
   const handleFormSubmit = async () => {
     if (formData.id) {
       try {
+        // Validate inputs
+        if (
+          !formData.date ||
+          !formData.product_name ||
+          !formData.color ||
+          !formData.amount ||
+          !formData.unit
+        ) {
+          setError('Please fill out all fields');
+          return;
+        }
+
         await axios.put(`/api/fruit/${formData.id}`, formData);
         handleClose();
         getData();
@@ -125,8 +138,6 @@ export default function FruitTablePage() {
       const res = compareDates(filterLocalDateAtMidnight, cellValue);
       return res;
     },
-    minValidYear: 2000,
-    maxValidYear: 2030,
   };
 
   const [colDefs] = useState([
@@ -213,7 +224,7 @@ export default function FruitTablePage() {
           defaultColDef={defaultColDef}
           pagination={true}
           paginationPageSize={pageSize}
-          paginationPageSizeSelector={[20, 50, 150]}
+          paginationPageSizeSelector={[10, 20, 50]}
         />
       </div>
       <FormDialog

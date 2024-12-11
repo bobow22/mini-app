@@ -40,7 +40,7 @@ export default function FormDialog({
                   </DialogTitle>
 
                   {showError && (
-                    <div className='w-fit text-sm text-red-500 py-2  rounded-md mt-2'>
+                    <div className='w-fit text-sm text-red-500 py-2 rounded-md mt-2'>
                       {showError}
                     </div>
                   )}
@@ -76,16 +76,28 @@ export default function FormDialog({
                           >
                             Product Name
                           </label>
-                          <input
-                            type='text'
+                          <select
                             name='product_name'
                             id='product_name'
                             className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5'
-                            placeholder='Type product name'
                             value={product_name}
                             onChange={(e) => handleChange(e)}
                             required
-                          />
+                          >
+                            <option value='' disabled>
+                              Select a product
+                            </option>
+                            <option value='Banana'>Banana</option>
+                            <option value='Cherry'>Cherry</option>
+                            <option value='Apple'>Apple</option>
+                            <option value='Orange'>Orange</option>
+                            <option value='Watermelon'>Watermelon</option>
+                            <option value='Mango'>Mango</option>
+                            <option value='Grapes'>Grapes</option>
+                            <option value='Strawberry'>Strawberry</option>
+                            <option value='Peach'>Peach</option>
+                            <option value='Pineapple'>Pineapple</option>
+                          </select>
                         </div>
 
                         {/* Color */}
