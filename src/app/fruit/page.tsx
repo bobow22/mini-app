@@ -9,6 +9,7 @@ import 'ag-grid-community/styles/ag-theme-quartz.css'; // Optional Theme applied
 import { convertDate, compareDates } from '@/helpers/formatDate';
 import Navbar from '../components/Navbar';
 import FormDialog from '../components/dialog';
+import { ColDef } from 'ag-grid-community';
 
 const initialValue = {
   id: '',
@@ -139,7 +140,7 @@ export default function FruitTablePage() {
     },
   };
 
-  const [colDefs] = useState([
+  const colDefs: ColDef[] = [
     { field: 'id', hide: true },
     {
       headerName: 'Date',
@@ -190,7 +191,7 @@ export default function FruitTablePage() {
       filter: false,
       flex: 1,
     },
-  ]);
+  ];
 
   const defaultColDef = {
     sortable: true,
